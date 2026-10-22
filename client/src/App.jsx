@@ -34,6 +34,7 @@ import {
   Trash2
 } from "lucide-react";
 import "./App.css";
+const API_URL = import.meta.env.VITE_API_URL;
 
 
 
@@ -641,7 +642,7 @@ useEffect(() => {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/tasks", {
+      const response = await fetch("https://worksync-891n.onrender.com/api/tasks", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -707,7 +708,7 @@ useEffect(() => {
     return;
   }
 
-  const socket = io("http://localhost:5000", {
+  const socket = io("https://worksync-891n.onrender.com", {
     auth: { token },
   });
 
@@ -761,7 +762,7 @@ useEffect(() => {
       }
 
       const response = await fetch(
-        "http://localhost:5000/api/projects",
+        "https://worksync-891n.onrender.com/api/projects",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -953,7 +954,7 @@ function sendChatMessage(event) {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/tasks/${id}`,
+      `https://worksync-891n.onrender.com/api/tasks/${id}`,
       {
         method: "PATCH",
         headers: {
@@ -998,7 +999,7 @@ async function handleTaskTimer(task) {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/tasks/${task.id}/timer/${action}`,
+      `https://worksync-891n.onrender.com/api/tasks/${task.id}/timer/${action}`,
       {
         method: "POST",
         headers: {
@@ -1043,7 +1044,7 @@ async function deleteTask(id) {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/tasks/${id}`,
+      `https://worksync-891n.onrender.com/api/tasks/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -1091,7 +1092,7 @@ async function addTask(event) {
   const token = sessionStorage.getItem("worksyncToken");
 
   try {
-    const response = await fetch("http://localhost:5000/api/tasks", {
+    const response = await fetch("https://worksync-891n.onrender.com/api/tasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -1157,7 +1158,7 @@ async function addProject(event) {
     const token = sessionStorage.getItem("worksyncToken");
 
     const response = await fetch(
-      "http://localhost:5000/api/projects",
+      "https://worksync-891n.onrender.com/api/projects",
       {
         method: "POST",
         headers: {
@@ -1209,7 +1210,7 @@ async function deleteProject(projectId) {
     const token = sessionStorage.getItem("worksyncToken");
 
     const response = await fetch(
-      `http://localhost:5000/api/projects/${projectId}`,
+      `https://worksync-891n.onrender.com/api/projects/${projectId}`,
       {
         method: "DELETE",
         headers: {
@@ -1264,7 +1265,7 @@ async function openManageMembers(project) {
     const token = sessionStorage.getItem("worksyncToken");
 
     const response = await fetch(
-      "http://localhost:5000/api/projects",
+      "https://worksync-891n.onrender.com/api/projects",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -1308,7 +1309,7 @@ async function searchMembers(event) {
     const token = sessionStorage.getItem("worksyncToken");
 
     const response = await fetch(
-      `http://localhost:5000/api/projects/users/search?email=${encodeURIComponent(memberEmail)}`,
+      `https://worksync-891n.onrender.com/api/projects/users/search?email=${encodeURIComponent(memberEmail)}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -1349,7 +1350,7 @@ async function addMember(user) {
     const token = sessionStorage.getItem("worksyncToken");
 
     const response = await fetch(
-      `http://localhost:5000/api/projects/${selectedProject.id}/members`,
+      `https://worksync-891n.onrender.com/api/projects/${selectedProject.id}/members`,
       {
         method: "POST",
         headers: {
@@ -1394,7 +1395,7 @@ async function removeMember(member) {
     const token = sessionStorage.getItem("worksyncToken");
 
     const response = await fetch(
-      `http://localhost:5000/api/projects/${selectedProject.id}/members/${member._id}`,
+      `https://worksync-891n.onrender.com/api/projects/${selectedProject.id}/members/${member._id}`,
       {
         method: "DELETE",
         headers: {
@@ -1663,7 +1664,7 @@ useEffect(() => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/notifications",
+        "https://worksync-891n.onrender.com/api/notifications",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -1767,7 +1768,7 @@ useEffect(() => {
 
               try {
                 const response = await fetch(
-                  `http://localhost:5000/api/notifications/${notification._id}/read`,
+                  `https://worksync-891n.onrender.com/api/notifications/${notification._id}/read`,
                   {
                     method: "PATCH",
                     headers: {

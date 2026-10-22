@@ -36,7 +36,7 @@ async function handleSubmit(event) {
       : { name, email, password };
 
     const response = await fetch(
-      "http://localhost:5000/api/auth/" + endpoint,
+       "https://worksync-891n.onrender.com/api/auth/" + endpoint,
       {
         method: "POST",
         headers: {

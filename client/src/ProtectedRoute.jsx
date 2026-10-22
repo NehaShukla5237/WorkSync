@@ -17,7 +17,7 @@ export default function ProtectedRoute() {
 
       try {
         const response = await fetch(
-          "http://localhost:5000/api/auth/me",
+          "https://worksync-891n.onrender.com/api/auth/me",
           {
             headers: {
               Authorization: `Bearer ${token}`,
